@@ -1,6 +1,6 @@
 "use client"
 
-const Button = ({ text, type, showModal }) => {
+const Button = ({ text, type, showModal, deleteTodo }) => {
 
     const theme = {
         create: 'bg-blue-400 text-white',
@@ -13,6 +13,10 @@ const Button = ({ text, type, showModal }) => {
         console.log(showModal)
         if (showModal !== undefined) {
             showModal(true)
+        }
+
+        if (type === 'delete') {
+            deleteTodo()
         }
     }
 

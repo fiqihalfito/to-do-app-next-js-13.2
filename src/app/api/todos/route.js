@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server"
 import prisma from "../../../../lib/prisma"
-import { createTodo } from "../../../../lib/prisma/todos"
+import { createTodo, deleteTodo } from "../../../../lib/prisma/todos"
 
 // NOTE : no need to use api because can directly get data from database
 export async function GET(request) {
@@ -23,4 +23,11 @@ export async function POST(request) {
     return NextResponse.json({ res: 'post called' })
     // const todo = request
     // const newTodo = await createTodo()
+}
+
+export async function DELETE(request) {
+    const { searchParams } = new URL(request.url)
+    const id = searchParams.get('id')
+    const deletedTodo = await deleteTodo(id)
+    return NextResponse.json({ deletedTodo })
 }

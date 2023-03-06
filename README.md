@@ -9,4 +9,5 @@
 ## cons in next.js 13.2
 
 - Can't POST or UPDATE data because nextjs is still developing it
+- Development only
 

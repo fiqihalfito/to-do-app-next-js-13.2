@@ -1,9 +1,11 @@
 // "use client"
 
+import { useRouter } from "next/navigation"
 import { useState } from "react"
 
 // NOTE : CANNOT DO POST OR EDIT FOR NOW, WAITING FOR FUTURE RELEASE
 const Modal = ({ type, showModal, todo }) => {
+    const router = useRouter()
 
     const [data, setData] = useState({
         user_email: 'fiqihalfito@gmail.com',
@@ -32,6 +34,8 @@ const Modal = ({ type, showModal, todo }) => {
         if (response.ok) {
             const res = await response.json()
             console.log('todo created', res)
+            router.refresh()
+            showModal(false)
         }
         console.log(response);
     }
